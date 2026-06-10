@@ -1,19 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-//#define R1 159
 #define R1 200
-//#define t 13.1
-//#define t 5.0
 #define R2 56.5
-//#define H 231
 #define H 200
-//#define a 0.301
-//#define b -4417.3
-//#define g 1.0
-//#define Rc 159
 #define Rc 200
-//#define rc 56.5
 #define rc 100
 #define _USE_MATH_DEFINES
 
@@ -21,61 +12,27 @@ int main(void){
 
 FILE *file1;
 char filename1[100];
-//sprintf(filename1,"Fig.5c.txt");
-//sprintf(filename1,"Fig.5d.txt");
-//sprintf(filename1,"Fig.5e.txt");
-//sprintf(filename1,"Fig.5f.txt");
 sprintf(filename1,"Fig.5i.txt");
 file1 = fopen(filename1,"w");
 
 int i,j,k,zzz,ttt,sss,s,ggg,mmm,kkk,KKK,KK,PH;
 double t,g,m,k1,K,K1,ph,al,alpha;
-//for(ttt=0;ttt<=50;ttt++){ 
-//t=ttt*0.2;
 t=10;
-//for(ggg=0;ggg<=50;ggg++){ 
-//g=1.0+ggg*0.005;
 g=1.0;
-//for(mmm=0;mmm<=50;mmm++){ 
-//m=1.0+mmm*0.005;
 m=1.0;
-//for(kkk=0;kkk<=50;kkk++){ 
-//k1=1.0+kkk*0.005;
 k1=1.0;
 
-//for(sss=0;sss<=50;sss++){ 
-//s=150+sss;
 s=200;
 
-//for(KKK=0;KKK<=50;KKK++){ 
-//K=50+KKK;
 K=50;
 
-//for(KK=0;KK<=50;KK++){ 
-//K1=KK;
 K1=1.0;
 
 for(PH=0;PH<50;PH++){ 
 ph=(M_PI/2.0)*PH/50.0;
 
 
-/*FILE *file1;
-char filename1[100];
-sprintf(filename1,"test1.txt");
-file1 = fopen(filename1,"w");
-FILE *file2;
-char filename2[100];
-sprintf(filename2,"test2.txt");
-file2 = fopen(filename2,"w");
-FILE *file3;
-char filename3[100];
-sprintf(filename3,"test-dXdYdZ.txt");
-file3 = fopen(filename3,"w");
-FILE *file4;
-char filename4[100];
-sprintf(filename4,"test-dxdydz.txt");
-file4 = fopen(filename4,"w");
-*/
+
 
 
 FILE *file50;
@@ -104,15 +61,12 @@ sprintf(filename6,"movie-particle-tangent-vectors-t1-phi=20.txt");
 file6 = fopen(filename6,"w");
 
 for(zzz=0;zzz<=75;zzz++){ 
-//for(zzz=0;zzz<1;zzz++){ 
 al=zzz*1.0;
-alpha=al*M_PI/180; //角度初期30度，70度
-//double al=75;
+alpha=al*M_PI/180; 
 
 double R,Theta,Z;
 double r,theta,z;
 double c,d,e,f;
-//printf("%d %d %lf %lf\n",PH,zzz,ph,alpha);
 double dR1,dR2,dR3,DR1,DR2,DR3,beta,dTh1,dTh2,dTh3,dZ1,dZ2,dZ3;
 double F11,F12,F13,F21,F22,F23,F31,F32,F33;
 double dr1,dr2,dr3,dth1,dth2,dth3,dz1,dz2,dz3;
@@ -126,47 +80,15 @@ int label1=0;
 double a=1-(1-0.301)*alpha/(75*M_PI/180);
 double b=-4417.3*alpha/(75*M_PI/180);
 
-for(i=0;i<s;i++){ //回転
+for(i=0;i<s;i++){ 
 	Theta=(2*M_PI*i*1.0/(s*1.0)); 
-//変形前と変形後の形の出力
-/*for(j=0;j<6;j++){ //r軸
-	R=R1+t*j*1.0/6.0;
-	Z=0;
-	r=sqrt(a*R*R+b);
-	theta=c*Theta+d*Z;
-	z=e*Theta+f*Z;
-	if(zzz==0)fprintf(file50,"%lf %lf %lf\n",R*cos(Theta),R*sin(Theta),Z);
-	if(zzz==150)fprintf(file5,"%lf %lf %lf\n",r*cos(theta),r*sin(theta),z);
-	label=label+1;
-}*/
-/*for(k=0;k<=50;k++){ //z軸
+
+
+
+for(k=0;k<=K;k++){ 
 	R=R1+t;
-	Z=H*(k/50.0); 
-	r=sqrt(a*R*R+b);
-	theta=c*Theta+d*Z;
-	z=e*Theta+f*Z;
-	if(zzz==0)fprintf(file50,"%lf %lf %lf\n",R*cos(Theta),R*sin(Theta),Z);
-	if(zzz==150)fprintf(file5,"%lf %lf %lf\n",r*cos(theta),r*sin(theta),z);
-	label=label+1;
-}*/
-/*for(j=0;j<6;j++){ //r軸
-	R=R1+t-t*j*1.0/6.0;
-	Z=H; 
-	r=sqrt(a*R*R+b);
-	theta=c*Theta+d*Z;
-	z=e*Theta+f*Z;
-	if(zzz==0)fprintf(file50,"%lf %lf %lf\n",r*cos(Theta),R*sin(Theta),Z);
-	if(zzz==150)fprintf(file5,"%lf %lf %lf\n",r*cos(theta),r*sin(theta),z);
-	label=label+1;
-}*/
-//内側or外側だけ出力
-for(k=0;k<=K;k++){ //z軸
-//	R=R1;//内側
-//	R=R1+(t*K1/50);//外側
-	R=R1+t;//外側
 	Z=H*(k/(K*1.0)); 
 	r=sqrt(a*R*R+b);
-//	double phi=20.0*M_PI/180;
 	double phi=ph;
 	if(k>=1)Theta=4.0*tan(phi)/Rc+Theta;//
 	theta=c*Theta+d*Z;
@@ -199,19 +121,7 @@ for(k=0;k<=K;k++){ //z軸
 	dz1=F11*dZ1+F12*dZ2+F13*dZ3;
 	dz2=F21*dZ1+F22*dZ2+F23*dZ3;
 	dz3=F31*dZ1+F32*dZ2+F33*dZ3;
-//全体描画
-/*	if(zzz==0)fprintf(file50,"%lf %lf %lf\n",R*cos(Theta),R*sin(Theta),Z);
-	if(zzz==150)fprintf(file5,"%lf %lf %lf\n",r*cos(theta),r*sin(theta),z);
-	if(zzz==0)fprintf(file60,"%lf %lf %lf %d %lf %lf %lf %lf %lf %lf %lf %lf %lf\n",R*cos(Theta),R*sin(Theta),Z,label1,
-	dR1*cos(Theta)-dR2*sin(Theta),dR1*sin(Theta)+dR2*cos(Theta),dR3,
-	dTh1*cos(Theta)-dTh2*sin(Theta),dTh1*sin(Theta)+dTh2*cos(Theta),dTh3,
-	dZ1*cos(Theta)-dZ2*sin(Theta),dZ1*sin(Theta)+dZ2*cos(Theta),dZ3);
-	if(zzz==150)fprintf(file6,"%lf %lf %lf %d %lf %lf %lf %lf %lf %lf %lf %lf %lf\n",r*cos(theta),r*sin(theta),z,label1,
-	dr1*cos(theta)-dr2*sin(theta),dr1*sin(theta)+dr2*cos(theta),dr3,
-	dth1*cos(theta)-dth2*sin(theta),dth1*sin(theta)+dth2*cos(theta),dth3,
-	dz1*cos(theta)-dz2*sin(theta),dz1*sin(theta)+dz2*cos(theta),dz3);
-*/
-//全体描画
+
 	if(zzz==0 && i<=4 && k<=4)fprintf(file50,"%lf %lf %lf\n",R*cos(Theta),R*sin(Theta),Z);
 	double Xin1=R*cos(Theta);
 	double Yin1=R*sin(Theta);
@@ -232,7 +142,6 @@ for(k=0;k<=K;k++){ //z軸
 	double Lin=sqrt((Xin1-Xin2)*(Xin1-Xin2)+(Yin1-Yin2)*(Yin1-Yin2)+(Zin1-Zin2)*(Zin1-Zin2));
 	double Lout=sqrt((Xout1-Xout2)*(Xout1-Xout2)+(Yout1-Yout2)*(Yout1-Yout2)+(Zout1-Zout2)*(Zout1-Zout2));
 	if(zzz==0 && i<=4 && k<=4)fprintf(file51,"%lf %lf %lf\n",Xout1,Yout1,Zout1);
-//	if(zzz==0 && i<=0 && k<=0)fprintf(file1,"%lf %lf %lf %lf\n",R*2*M_PI*1.0/(s*1.0),t,Lin,Lout);
 	double xin1=r*cos(theta);
 	double yin1=r*sin(theta);
 	double zin1=z;
@@ -259,9 +168,6 @@ for(k=0;k<=K;k++){ //z軸
 	double sq1=sqrt(vec1x*vec1x+vec1y*vec1y+vec1z*vec1z);
 	double sq2=sqrt(vec2x*vec2x+vec2y*vec2y+vec2z*vec2z);
 	double phi1=acos((vec1x*vec2x+vec1y*vec2y+vec1z*vec2z)/(sq1*sq2));
-//	if(zzz==0 && i<=0 && k<=0)fprintf(file1,"%lf %lf %lf %lf\n",R*2*M_PI*1.0/(s*1.0),g,Lin,lin);
-//	if(zzz==0 && i<=0 && k<=0)fprintf(file1,"%lf %lf %lf %lf\n",H*1.0/(K*1.0),m,Din,din);
-//	if(zzz==0 && i<=0 && k<=0)fprintf(file1,"%lf %lf %lf %lf\n",t*(K1/50.0),k1,tt0,tt1);
 	if(i<=0 && k==1)fprintf(file1,"%d %lf %lf %lf %lf %lf\n",PH,alpha,phi,phi1,alpha,sq1);
 	
 	if(zzz==75 && i<=4 && k<=4)fprintf(file5,"%lf %lf %lf\n",r*cos(theta),r*sin(theta),z);
@@ -279,14 +185,9 @@ for(k=0;k<=K;k++){ //z軸
 }
 
 }
-//if(zzz==0)fprintf(file50,"\n");
-//fprintf(file50,"\n\n");
-//fprintf(file5,"\n\n");
-//fprintf(file60,"\n\n");
-//fprintf(file6,"\n\n");
 
-}//zzzのおわり
-
+}
+	
 fclose(file50);
 fclose(file51);
 fclose(file5);
@@ -294,12 +195,9 @@ fclose(file55);
 fclose(file60);
 fclose(file6);
 
-//}//sssの終わり
-//}//tttの終わり
-}//PHの終わり
+}
 fclose(file1);
 
 return 0;
 }
-
 
