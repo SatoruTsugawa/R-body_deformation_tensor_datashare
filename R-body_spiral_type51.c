@@ -93,7 +93,7 @@ for(j=0;j<10;j++){ //r軸
 	z=e*Theta+f*Z;
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
 	label=label+1;
 }
 for(k=0;k<40;k++){ //z軸
@@ -104,7 +104,7 @@ for(k=0;k<40;k++){ //z軸
 	z=e*Theta+f*Z;
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
 	label=label+1;
 }
 for(j=0;j<10;j++){ //r軸
@@ -115,7 +115,7 @@ for(j=0;j<10;j++){ //r軸
 	z=e*Theta+f*Z;
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
 	label=label+1;
 }
 for(k=0;k<40;k++){ //z軸
@@ -219,8 +219,8 @@ for(k=0;k<40;k++){ //z軸
 
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file51,"%lf %lf %lf %d %lf %lf\n",r*cos(theta),r*sin(theta),z,label,curv,tors);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file51,"%lf %lf %lf %d %lf %lf\n",r*cos(theta),r*sin(theta),z,label,curv,tors);
 	if(k==20)fprintf(file6,"%d %lf %lf %lf %lf %lf %lf %lf\n",zzz,Theta,r*cos(theta),r*sin(theta),z,curv,tors,H);
 	label=label+1;
 }
@@ -284,8 +284,8 @@ for(k=0;k<40;k++){ //z軸
 	}
 }
 
-fprintf(file5,"\n\n");
-fprintf(file51,"\n\n");
+if(zzz%50==0)fprintf(file5,"\n\n");
+if(zzz%50==0)fprintf(file51,"\n\n");
 fprintf(file6,"\n\n");
 free(dumy);
 free(alpha);

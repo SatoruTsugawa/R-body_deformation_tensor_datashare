@@ -36,7 +36,7 @@ file4 = fopen(filename4,"w");
 */
 FILE *file5;
 char filename5[100];
-sprintf(filename5,"movie-particlePa.txt");
+sprintf(filename5,"Fig.3c.txt");
 file5 = fopen(filename5,"w");
 FILE *file6;
 char filename6[100];
@@ -45,7 +45,7 @@ file6 = fopen(filename6,"w");
 
 
 
-for(zzz=0;zzz<600;zzz++){ 
+for(zzz=0;zzz<=600;zzz++){ 
 double a=-(1.0/1200.0)*(zzz-1200);
 double b=-(50.0/3.0)*zzz;
 //for(zzz=0;zzz<1;zzz++){ 
@@ -90,7 +90,7 @@ for(j=0;j<10;j++){ //r軸
 	z=e*Theta+f*Z;
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
 	label=label+1;
 }
 for(k=0;k<40;k++){ //z軸
@@ -102,7 +102,7 @@ for(k=0;k<40;k++){ //z軸
 	z=e*Theta+f*Z;
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
 	label=label+1;
 }
 for(j=0;j<10;j++){ //r軸
@@ -114,7 +114,7 @@ for(j=0;j<10;j++){ //r軸
 	z=e*Theta+f*Z;
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
 	label=label+1;
 }
 for(k=0;k<40;k++){ //z軸
@@ -189,7 +189,7 @@ for(k=0;k<40;k++){ //z軸
 
 //	fprintf(file1,"%lf %lf %lf %d\n",R*cos(Theta),R*sin(Theta),Z,label);
 //	fprintf(file2,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
-	fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
+	if(zzz%50==0)fprintf(file5,"%lf %lf %lf %d\n",r*cos(theta),r*sin(theta),z,label);
 	double height;
 	if(Theta<2*M_PI)height=H-2*(H/(2*M_PI*2.0))*(2*M_PI-Theta);
 	if(Theta>=2*M_PI)height=H-2*(H/(2*M_PI*2.0))*(Theta-2*M_PI);
@@ -257,7 +257,7 @@ for(k=0;k<40;k++){ //z軸
 	}
 }
 
-fprintf(file5,"\n\n");
+if(zzz%50==0)fprintf(file5,"\n\n");
 fprintf(file6,"\n\n");
 free(dumy);
 free(alpha);
